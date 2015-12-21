@@ -107,16 +107,23 @@
         circleRadius = _circleRadius;
     }
     
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
+    UIBezierPath *path_1 = [UIBezierPath bezierPathWithArcCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
                                                         radius:circleRadius
                                                     startAngle:-M_PI_2
                                                       endAngle:M_PI_2 * 3
                                                      clockwise:true];
+    
+    UIBezierPath *path_2 = [UIBezierPath bezierPathWithArcCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
+                                                          radius:circleRadius - 0.5
+                                                      startAngle:-M_PI_2
+                                                        endAngle:M_PI_2 * 3
+                                                       clockwise:true];
+    
     _circlePathLayer.frame = self.bounds;
-    _circlePathLayer.path = path.CGPath;
+    _circlePathLayer.path = path_2.CGPath;
     
     _backgroundLayer.frame = self.bounds;
-    _backgroundLayer.path = path.CGPath;
+    _backgroundLayer.path = path_1.CGPath;
 }
 
 @end
